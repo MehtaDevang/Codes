@@ -1,0 +1,13 @@
+import java.util.*;
+import java.util.Stack;
+public class Waiter {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		String[] str = scanner.nextLine().trim().split(" ");
+		int n = Integer.parseInt(str[0]);
+		int q = Integer.parseInt(str[1]);
+		System.out.println(Long.MAX_VALUE);
+		System.out.println(Integer.MAX_VALUE);
+	}
+}

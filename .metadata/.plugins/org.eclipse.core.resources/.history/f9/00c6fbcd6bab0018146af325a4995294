@@ -1,0 +1,53 @@
+import java.sql.Time;
+import java.util.*;
+public class NeedleInHayStack {
+	static HashSet<String> set = new HashSet<>();
+	static String text = "";
+	static boolean f = false;
+	public static void permutation(String str) { 
+	    permutation("", str);
+	    if(f == false) {
+	    	System.out.println("NO");
+	    }
+	}
+
+	private static void permutation(String prefix, String str) {
+	    int n = str.length();
+	    if (n == 0) {
+	    	if(text.contains(prefix)) {
+	    		System.out.println("YES");
+	    		f = true;
+	    		return;
+	    	}
+	    }
+	    else {
+	        for (int i = 0; i < n; i++)
+	            permutation(prefix + str.charAt(i), str.substring(0, i) + str.substring(i+1, n));
+	    }
+	}
+	
+	public static void main(String[] args) {
+//		long start = System.nanoTime();
+		Scanner scanner = new Scanner(System.in);
+		int t = Integer.parseInt(scanner.nextLine());
+		
+		for(int i = 0; i < t; i++) {
+			String pattern = scanner.nextLine().trim().replace(" ", "");
+			text = scanner.nextLine().trim().replace(" ", "");
+			int len = pattern.length();
+			permutation(pattern);
+//			boolean flag = false;
+//			for(String s : set) {
+//				if(text.contains(s)) {
+//					flag = true;
+//					System.out.println("YES");
+//					break;
+//				}
+//			}
+//			if(flag == false) {
+//				System.out.println("NO");
+//			}
+		}
+//		System.out.println((System.nanoTime() - start) / 1000000000);
+	}
+}

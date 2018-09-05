@@ -1,0 +1,26 @@
+import java.util.*;
+public class SubStrings {
+	public static HashSet<String> set = new HashSet<>();
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		SubStrings obj = new SubStrings();
+		
+		String str = scanner.nextLine();
+		for(int i = 0; i < str.length(); i++) {
+			obj.makeSubStrings(str, i, str.length());
+		}
+		
+		for(String s : set) {
+			System.out.println(s);
+		}
+		
+	}
+	
+	public void makeSubStrings(String s, int start, int end) {
+		if(start < end) {
+			String str = s.substring(start, end);
+			makeSubStrings(str, start, end-1);
+			set.add(str);
+		}
+	}
+}

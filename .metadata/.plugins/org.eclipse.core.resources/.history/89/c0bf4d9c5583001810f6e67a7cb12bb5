@@ -1,0 +1,19 @@
+import java.util.*;
+public class Pattern {
+	public static void main(String[] args) {
+//		for(int i = 1; i <= 5; i++) {
+//			int k = 4;
+//			int count = 1;
+//			for(int j = i; j < 15;j = j + k ) {
+//				while(count > 0) {
+//					System.out.println(j);
+//					count++;
+//					k = k-1;
+//				}
+//			}
+//			System.out.println("\n");
+//		}
+		System.out.println("HI");
+
+	}
+}

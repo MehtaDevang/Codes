@@ -1,0 +1,32 @@
+import java.util.*;
+public class SumSelected {
+	public static void main(String args) {
+		Scanner scanner = new Scanner(System.in);
+		int t = Integer.parseInt(scanner.nextLine());
+		for(int i = 0; i < t; i++) {
+			int n = Integer.parseInt(scanner.nextLine());
+			String[] temp = scanner.nextLine().trim().split(" ");
+			ArrayList<Integer> arr = new ArrayList<>();
+			for(int j = 0; j < n; j++) {
+				arr.add(Integer.parseInt(temp[j]));
+			}
+//			Collections.sort(arr);
+			int sum = 0;
+			while(!arr.isEmpty()) {
+				int max = Collections.max(arr);
+				int index = arr.indexOf(max);
+				if(index == 0) {
+					sum = sum + max;
+					arr.remove(index);
+				}
+				else {
+					sum = sum + max;
+					arr.remove(index);
+					arr.remove(index - 1);
+				}
+			}
+			System.out.println(sum);
+		}
+		scanner.close();
+	}
+}

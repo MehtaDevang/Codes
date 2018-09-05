@@ -1,0 +1,58 @@
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+import java.awt.image.*;
+
+public class Welcome extends JFrame{
+	private JLabel message;
+	private JLabel containsImage;
+	private ImageIcon image;
+	private JFrame frame;
+	Welcome(){
+		super("Welcome");
+		JPanel panel1 = new JPanel();
+//		JPanel panel2 = new JPanel();
+		panel1.setLayout(new FlowLayout());
+		pack();
+		image = new ImageIcon("/home/reaper/Downloads/independence.jpeg");
+		containsImage = new JLabel(image);
+		panel1.add(containsImage);
+		message = new JLabel();
+		message.setText("A software made on the occassion of Independence Day");
+		panel1.add(message);
+		add(panel1);
+		
+		JButton button = new JButton("Next Screen");
+		panel1.add(button);
+		
+		Handler handler = new Handler();
+        button.addActionListener(handler);
+	}
+	
+	class Handler implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			swapPanel();
+		}
+	}
+	
+	
+	public class PanelTwo extends JPanel {{
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        add(new JButton("Button One"));
+        add(new JButton("Button Two"));
+        add(new JButton("Button Three"));
+        add(new JButton("Button Four"));
+        add(new JButton("Button Five"));
+    }}
+	
+	protected void swapPanel() {
+  
+                removeAll();
+                add(new PanelTwo());
+                invalidate();
+                revalidate();
+
+    }
+}

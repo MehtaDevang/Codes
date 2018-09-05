@@ -1,0 +1,43 @@
+
+import java.util.*;
+
+class CoinChange {
+	    public static int countHouse(int arr[], int begin, int end){
+	    	int n = arr.length;
+	        int[][] map = new int[n+1][n+1];
+	        Arrays.fill(map, 0);
+	        for(int i = 1; i < n+1; i++){
+	            for(int j = i; j <= n; j++){
+	                if(i == j){
+	                    map[i][j] = arr[j];
+	                }
+	                else{
+	                    map[i][j] = map[i][j-1] + arr[j];
+	                }
+	            }
+	        }
+	        return map[begin][end];
+	    }
+    public static void main(String args[] ) throws Exception {
+        // Write your code here
+        Scanner scanner = new Scanner(System.in);
+        int t = Integer.parseInt(scanner.nextLine());
+        for(int i = 0; i < t; i++){
+            int n = Integer.parseInt(scanner.nextLine());
+            String[] temp = scanner.nextLine().trim().split(" ");
+            int[] arr = new int[n];
+            for(int j = 0; j < n; j++){
+                arr[j] = Integer.parseInt(temp[j]);
+            }
+            int q = Integer.parseInt(scanner.nextLine());
+            for(int j = 0; j < q; j++){
+                String[] str = scanner.nextLine().trim().split(" ");
+                int begin = Integer.parseInt(str[0]);
+                int end = Integer.parseInt(str[1]);
+                int count = countHouse(arr, begin, end);
+                System.out.println(count);
+            }
+            
+        }
+    }
+}

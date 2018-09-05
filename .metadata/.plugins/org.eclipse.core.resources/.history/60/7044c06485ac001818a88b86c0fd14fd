@@ -1,0 +1,27 @@
+import java.util.*;
+public class Lemurs {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		String[] str = scanner.nextLine().trim().split(" ");
+		int n = Integer.parseInt(str[0]);
+		int k = Integer.parseInt(str[1]);
+		
+		int count = 0;
+		int each = n/k;
+		n = n % k;
+		while(k != n) {
+			if(n < k/2) {
+				count = n;
+				
+			}
+			else {
+				count = k - n;
+				k = k-1;
+				n = n + each;
+			}
+		}
+		System.out.println(count);
+		
+	}
+}

@@ -1,0 +1,51 @@
+import java.util.*;
+public class XSquare {
+	static int lef, rig;
+	public static int sum(int[] A, int[] B, int flag, int l, int r) {
+		int sum = 0;
+		if(flag == 1) {
+			sum = sum1(A, B, l, r);
+		}
+		else {
+			sum = sum2(A, B, l, r);
+		}
+		return sum;
+	}
+	
+	public static int sum1(int[] A, int[] B, int l, int r) {
+		if(l > r) {
+			return 0;
+		}
+		else {
+			return sum1(A, B, lef+=2, r) + sum1(A, B, l++, r);
+		}
+	}
+	
+	public static int sum2(int[] A, int[] B, int l, int r) {
+		
+	}
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		String[] str = scanner.nextLine().trim().split(" ");
+		int n = Integer.parseInt(str[0]);
+		int q = Integer.parseInt(str[1]);
+		String[] temp = scanner.nextLine().trim().split(" ");
+		String[] temp2 = scanner.nextLine().trim().split(" ");
+		int[] A = new int[n];
+		int[] B = new int[n];
+		for(int i = 0; i < n; i++) {
+			A[i] = Integer.parseInt(temp[i]);
+			B[i] = Integer.parseInt(temp2[i]);
+		}
+		for(int i = 0; i < q; i++) {
+			String[] s = scanner.nextLine().trim().split(" ");
+			int flag = Integer.parseInt(s[0]);
+			int left = Integer.parseInt(s[1]);
+			int right = Integer.parseInt(s[2]);
+			lef = left;
+			rig = right;
+			int sum = sum(A, B, flag, left, right);
+			System.out.println(sum);
+		}
+	}
+}

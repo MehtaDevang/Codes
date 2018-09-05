@@ -1,0 +1,22 @@
+import java.util.*;
+public class WordReverse {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		WordReverse obj = new WordReverse();
+		
+		String str = scanner.nextLine();
+		String[] s = str.split(" ");
+		String res = obj.reverse(s, 0);
+		System.out.println(str);
+	}
+	
+	public String reverse(String[] s, int index) {
+		if(index >= s.length) {
+			return "";
+		}
+		else {
+			return s[index] + reverse(s, index+1);
+		}
+		
+	}
+}

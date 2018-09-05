@@ -1,0 +1,102 @@
+import java.util.*;
+
+class Node{
+	int school;
+	int roll;
+	Node next;
+	
+	Node(int s, int r){
+		this.school = s;
+		this.roll = r;
+		this.next = null;
+	}
+}
+
+public class GobletOfFire {
+	Node front;
+	Node last;
+	
+	public GobletOfFire() {
+		this.front = this.last = null;
+	}
+	
+	public Node dequeue() {
+		if(front == last) {
+			Node temp = front;
+			front = null;
+			last = null;
+			return temp;
+		}
+		else {
+			Node temp = last;
+			Node prev = null;
+			while(temp != front) {
+				prev = temp;
+				temp = temp.next;
+			}
+			front = prev;
+			return temp;
+		}
+	}
+	public void push(int school, int roll) {
+		Node node = new Node(school, roll);
+		boolean flag = false;
+		if(this.last  == null) {
+			this.front = node;
+			this.last = node;
+			return;
+		}
+		else {
+			Node temp = last;
+			Node prev = null;
+			while(true) {
+				if(temp == front && temp.school != node.school) {
+					break;
+				}
+				if(temp.school == node.school) {
+					prev.next = node;
+					node.next = temp;
+					flag = true;
+					break;
+				}
+				else {
+					prev = temp;
+					temp = temp.next;
+				}
+			}
+			if(flag == false) {
+				node.next = last;
+				last = node;
+			}
+		}
+	}
+	
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int q = Integer.parseInt(scanner.nextLine());
+		GobletOfFire obj = new GobletOfFire();
+		
+		for(int i = 0; i < q; i++) {
+			String[] str = scanner.nextLine().trim().split(" ");
+			String operation = str[0];
+		
+			if(operation.equals("E")) {
+				int school = Integer.parseInt(str[1].trim());
+				int roll = Integer.parseInt(str[2].trim());
+//				System.out.println(str[1]);
+//				System.out.println(str[2]);
+				obj.push(school, roll);
+			}
+			else {
+				Node temp = obj.dequeue();
+				System.out.println(temp.school + " " + temp.roll);
+			}
+		}
+//		Node temp = obj.last;
+////		System.out.println(obj.last.school);
+//		while(temp != null) {
+//			System.out.println(temp.school+ " " + temp.roll);
+//			temp = temp.next;
+//		}
+	}
+}

@@ -1,0 +1,14 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class Welcome extends JFrame{
+	private JLabel message;
+	
+	Welcome(){
+		super("Welcome");
+		setLayout(new FlowLayout());
+		message = new JLabel();
+		message.setText("A software ade on the occassion of Independence Day");
+		add(message);
+	}
+}

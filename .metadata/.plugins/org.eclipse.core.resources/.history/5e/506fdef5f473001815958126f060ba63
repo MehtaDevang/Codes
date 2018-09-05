@@ -1,0 +1,64 @@
+import java.util.*;
+import java.io.*;
+public class RemoveDuplicates {
+	Node head;
+	public class Node{
+		int data;
+		Node next;
+		public Node(int data) {
+			this.data = data;
+			next = null;
+		}
+	}
+	
+	public void removeDup() {
+		Node temp = head;
+		Node temp2 = head;
+		HashSet<Integer> s = new HashSet<Integer>();
+		while(temp.next != null) {
+			if(!s.contains(temp.data)) {
+				s.add(temp.data);
+			}
+			else {
+				temp2.next = temp.next;
+			}
+			temp2 = temp;
+			temp = temp.next;
+		}
+	}
+	
+	public void printList(Node h) {
+		Node temp = h;
+		while(temp != null) {
+			System.out.print(temp.data);
+		}
+	}
+	
+	public void insert(int data) {
+		Node node = new Node(data);
+		if(head == null) {
+			head = node;
+		}
+		else {
+			Node temp = head;
+			while(temp.next != null) {
+				temp = temp.next;
+			}
+			temp.next = node;
+		}
+	}
+	
+	public static void main(String[] args) {
+		RemoveDuplicates obj = new RemoveDuplicates();
+		
+		obj.insert(1);
+		obj.insert(2);
+		obj.insert(3);
+		obj.insert(2);
+		obj.insert(4);
+		obj.insert(3);
+		obj.printList(obj.head);
+		obj.removeDup();
+//		obj.printList(obj.head);
+	}
+}

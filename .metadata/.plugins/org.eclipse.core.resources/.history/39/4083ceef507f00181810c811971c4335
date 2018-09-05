@@ -1,0 +1,39 @@
+import java.util.*;
+public class PalindromicSequences {
+	
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		PalindromicSequences obj = new PalindromicSequences();
+		String str = scanner.next();
+		int n = str.length();
+		obj.makeSequences1(str,0, n);
+		
+	}
+	
+	public void makeSequences1(String str,int start,  int n) {
+		if(start < n) {
+			String s = str.substring(start+1);
+			palindrome(s);
+		}
+		
+	}
+	
+	public void makeSequences2(int n) {
+		
+	}
+	public void makeSequences3(int n) {
+		
+	}
+	
+	public static void palindrome(String str) {
+		int len = str.length();
+		int i = 0, j = len-1;
+		while(i != j || str.charAt(i) != str.charAt(j)) {
+			i++;
+			j--;
+		}
+		if(i == j) {
+			System.out.println(str);
+		}
+	}
+}

@@ -1,0 +1,49 @@
+import java.util.*;
+public class MonkAndRotation {
+	
+	public static long[] rotate(long[] arr, long k) {
+		int len = arr.length;
+		if(k == len) {
+			return arr;
+		}
+		long[] a = new long[len];
+		if(k > len) {
+			int rotation = (int)k % len;
+			
+		}
+		else {
+			for(int i = 0; i < len-k; i++) {
+				a[(int)(i + k)] = arr[i];
+			}
+			int index = 0;
+			for(int i = (int)(len-k); i < len; i++) {
+				a[index] = arr[i];
+				index++;
+			}
+		}
+		return a;
+	}
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		int t = Integer.parseInt(scanner.nextLine().trim());
+		
+		for(int i = 0; i < t; i++) {
+			String[] str = scanner.nextLine().trim().split(" ");
+			int n = Integer.parseInt(str[0]);
+			long k = Long.parseLong(str[1]);
+			long[] arr = new long[n];
+ 			String[] temp = scanner.nextLine().trim().split(" ");
+			for(int j = 0; j < n; j++) {
+				arr[j] = Long.parseLong(temp[j]);
+			}
+			
+			long[] res = rotate(arr, k);
+			
+			for(int j = 0; j < n; j++) {
+				System.out.print(res[j] + " ");
+			}
+			System.out.println("\n");
+		}
+	}
+}

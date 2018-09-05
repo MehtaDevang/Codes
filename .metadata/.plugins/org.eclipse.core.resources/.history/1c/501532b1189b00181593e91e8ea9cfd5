@@ -1,0 +1,70 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class NonDivisibleSubset {
+    public static HashSet<Integer> set = new HashSet<>();
+    // Complete the nonDivisibleSubset function below.
+    static int nonDivisibleSubset(int k, int[] S) {
+        int n = S.length;
+        for(int i = 0; i < n-1; i++){
+            for(int j = i + 1; i < n; i++){
+                long sum = S[i] + S[j];
+                if(sum % k != 0){
+                	if(set.contains(S[i])) {
+                		int c = 0;
+                		for(int s : set) {
+                			c = c + s;
+                		}
+                		if((c + S[j]) % k != 0) {
+                			set.add(S[j]);
+                		}
+                	}
+                	
+                	else if(set.contains(S[j])) {
+                		int c = 0;
+                		for(int s : set) {
+                			c = c + s;
+                		}
+                		if((c + S[i]) % k != 0) {
+                			set.add(S[i]);
+                		}
+                	}
+//                    System.out.println(S[i] + " " + S[j]);
+                }
+            }
+        }
+        for(int s : set) {
+        	System.out.println(s);
+        }
+        return set.size();
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+    	
+        String[] nk = scanner.nextLine().split(" ");
+
+        int n = Integer.parseInt(nk[0]);
+
+        int k = Integer.parseInt(nk[1]);
+
+        int[] S = new int[n];
+
+        String[] SItems = scanner.nextLine().split(" ");
+
+        for (int i = 0; i < n; i++) {
+        	S[i] = Integer.parseInt(SItems[i]);
+        }
+
+        int result = nonDivisibleSubset(k, S);
+        System.out.println(result);
+
+        scanner.close();
+    }
+}

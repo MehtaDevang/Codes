@@ -1,0 +1,55 @@
+import java.util.*;
+
+class Characters{
+	char c;
+	int freq;
+	
+	Characters(char ch, int f){
+		c = ch;
+		freq = f;
+	}
+}
+
+class Chec implements Comparator<Characters>{
+	public int compare(Characters c1, Characters c2) {
+		if(c1.freq < c2.freq) {
+			return -1;
+		}
+		else if(c1.freq > c2.freq) {
+			return 1;
+		}
+		else {
+			return c1.c < c2.c ? 0 : 1;
+		}
+	}
+	
+}
+public class DifficultCharacters {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int t = Integer.parseInt(scanner.nextLine().trim());
+		
+		for(int i = 0; i < t; i++) {
+			String str = scanner.nextLine().trim().replace(" ", "");
+			HashSet<Character> set = new HashSet<>();
+			int a = 65;
+			ArrayList<Characters> arr = new ArrayList<>();
+			for(int j = 0; j < 25; j++) {
+				char c = (char)a;
+				a++;
+				Characters obj = new Characters(c, 0);
+				arr.add(obj);
+			}
+			
+			for(char c : str.toCharArray()) {
+				int index = c - 'a';
+				arr.get(index).freq++;
+			}
+			
+			Collections.sort(arr, new Chec());
+			for(Characters ch : arr) {
+				System.out.print(ch.c + (int)ch.freq + " ");
+			}
+		}
+	}
+}

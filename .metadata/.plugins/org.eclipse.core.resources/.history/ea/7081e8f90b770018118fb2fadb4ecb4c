@@ -1,0 +1,43 @@
+import java.util.*;
+import java.io.*;
+public class QueueUsingStack {
+	
+	public void pushNode(java.util.Stack<Integer> stack, int data) {
+		int d = 0;
+		while(stack != null) {
+			d = stack.pop();
+			pushNode(stack, data);
+		}
+		if(stack == null) {
+			stack.push(data);
+			return;
+		}
+		else {
+			stack.push(d);
+			return;
+		}
+		
+	}
+	
+	public void print(java.util.Stack<Integer> stack) {
+		while(stack != null) {
+			System.out.print(stack.pop() + " ");
+		}
+	}
+	
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		QueueUsingStack obj = new QueueUsingStack();
+		
+		java.util.Stack<Integer> stack = new java.util.Stack<Integer>();
+		
+		obj.pushNode(stack, 1);
+		obj.pushNode(stack, 2);
+		obj.pushNode(stack, 3);
+		obj.pushNode(stack, 4);
+		obj.pushNode(stack, 5);
+		obj.pushNode(stack, 6);
+		
+		obj.print(stack);
+	}
+}

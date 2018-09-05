@@ -1,0 +1,21 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.image.*;
+
+public class Welcome extends JFrame{
+	private JLabel message;
+	private JLabel containsImage;
+	private ImageIcon image;
+	private JFrame frame;
+	Welcome(){
+		super("Welcome");
+		frame = new JFrame();
+		frame.setLayout(new FlowLayout());
+		image = new ImageIcon("/home/reaper/Downloads/independence.jpeg");
+		containsImage = new JLabel(image);
+		frame.add(containsImage);
+		message = new JLabel();
+		message.setText("A software made on the occassion of Independence Day");
+		frame.add(message);
+	}
+}

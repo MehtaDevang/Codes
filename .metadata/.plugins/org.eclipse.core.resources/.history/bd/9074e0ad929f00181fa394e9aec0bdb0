@@ -1,0 +1,9 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class MainPage extends JFrame{
+	MainPage(){
+		super("Main Page");
+		setLayout(new FlowLayout());
+	}
+}

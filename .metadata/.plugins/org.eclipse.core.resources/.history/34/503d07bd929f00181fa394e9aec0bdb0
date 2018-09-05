@@ -1,0 +1,27 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class MainPage extends JFrame{
+	private JLabel user;
+	private JLabel pass;
+	private JTextField username;
+	private JPasswordField password;
+	private JButton submit;
+	MainPage(){
+		super("Main Page");
+		setLayout(new FlowLayout());
+		user = new JLabel("username : ");
+		pass = new JLabel("password : ");
+		
+		username = new JTextField();
+		password = new JPasswordField();
+		
+		submit = new JButton("Submit");
+		
+		add(user);
+		add(pass);
+		add(username);
+		add(password);
+		add(submit);
+	}
+}

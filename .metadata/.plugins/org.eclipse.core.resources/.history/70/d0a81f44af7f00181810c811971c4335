@@ -1,0 +1,29 @@
+import java.util.*;
+public class EqualHalves {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		EqualHalves obj = new EqualHalves();
+		int n = scanner.nextInt();
+		
+		ArrayList<Integer> list = new ArrayList<>();
+		list = obj.generate(list, n);
+		for(Integer i : list) {
+			System.out.println(i);
+		}
+	}
+	
+	public ArrayList<Integer> generate(ArrayList<Integer> a, int n){
+//		ArrayList<Integer> array = new ArrayList<>();
+		if(n == 1) {
+			a.add(1);
+			a.add(0);
+			return a;
+		}
+		else {
+			for(Integer i : a) {
+				a.add(Integer.parseInt(i.toString() + generate(a, n-1)));
+			}
+		}
+		return a;
+	}
+}

@@ -1,0 +1,12 @@
+import java.awt.*;
+import javax.swing.*;
+import java.net.*;
+import java.io.*;
+
+public class Media extends JFrame{
+	
+	Media(){
+		super("Play Video");
+		setLayout(new FlowLayout());
+	}
+}

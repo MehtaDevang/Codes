@@ -1,0 +1,11 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class MainClass extends JFrame{
+	public static void main(String[] args) {
+		Welcome obj = new Welcome();
+		obj.setSize(200, 100);
+		obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		obj.setVisible(true);
+	}
+}

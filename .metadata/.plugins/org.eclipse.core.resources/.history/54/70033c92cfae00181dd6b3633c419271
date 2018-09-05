@@ -1,0 +1,76 @@
+import java.util.*;
+
+public class GobletOfFire {
+	
+	public static class Node{
+		int school;
+		int roll;
+		Node next;
+		
+		Node(int s, int r){
+			this.school = s;
+			this.roll = r;
+			this.next = null;
+		}
+	}
+	
+	Node front;
+	Node last;
+	public void push(Node node) {
+		boolean flag = false;
+		if(front == null) {
+			front = node;
+			last = node;
+		}
+		else {
+			Node temp = last;
+			Node prev = null;
+			while(true) {
+				if(temp == front && temp.school != node.school) {
+					break;
+				}
+				if(temp.school == node.school) {
+					prev.next = node;
+					node.next = temp;
+					flag = true;
+					break;
+				}
+				else {
+					prev = temp;
+					temp = temp.next;
+				}
+			}
+			if(flag == false) {
+				node.next = last;
+				last = node;
+			}
+		}
+	}
+	
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int q = Integer.parseInt(scanner.nextLine());
+		GobletOfFire obj = new GobletOfFire();
+		
+		for(int i = 0; i < q; i++) {
+			String[] str = scanner.nextLine().trim().split(" ");
+			String operation = str[0];
+			int school = Integer.parseInt(str[1]);
+			int roll = Integer.parseInt(str[2]);
+			
+			if(operation == "E") {
+				Node node = new Node(school, roll);
+				obj.push(node);
+			}
+			else {
+				
+			}
+		}
+		Node temp = obj.last;
+		System.out.println(temp);
+		while(temp != null) {
+			System.out.println(temp.school+ " " + temp.roll);
+			temp = temp.next;
+		}
+	}
+}

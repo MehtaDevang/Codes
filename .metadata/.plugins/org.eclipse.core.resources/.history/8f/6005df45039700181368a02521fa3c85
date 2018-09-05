@@ -1,0 +1,52 @@
+import java.util.*;
+public class SumSelected {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int t = Integer.parseInt(scanner.nextLine());
+		for(int i = 0; i < t; i++) {
+			int n = Integer.parseInt(scanner.nextLine());
+			String[] temp = scanner.nextLine().trim().split(" ");
+			ArrayList<Integer> arr = new ArrayList<>();
+			for(int j = 0; j < n; j++) {
+				arr.add(Integer.parseInt(temp[j]));
+			}
+//			Collections.sort(arr);
+			
+			int sum = 0;
+			while(!arr.isEmpty()) {
+				ArrayList<Integer> arr2 = arr;
+				int max = Collections.max(arr);
+				int req_index = 0;
+				int min = 100000;
+				while(Collections.max(arr2) == max) {
+					int m = arr2.indexOf(max);
+					if(m == 0) {
+						req_index = 0;
+						break;
+					}
+					else {
+						if(arr2.get(m-1) < min) {
+							req_index = m;
+							min = arr2.get(m-1);
+						}
+						arr2.set(m, -1);
+//						arr2.remove(req_index);
+					}
+					
+				}
+//				int index = arr.indexOf(max);
+				if(req_index == 0) {
+					sum = sum + max;
+					arr.remove(req_index);
+				}
+				else {
+					sum = sum + max;
+					arr.remove(req_index);
+					arr.remove(req_index - 1);
+				}
+			}
+			System.out.println(sum);
+		}
+		scanner.close();
+	}
+}

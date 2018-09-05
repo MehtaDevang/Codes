@@ -1,0 +1,22 @@
+import java.awt.*;
+import javax.swing.*;
+import java.net.*;
+import java.io.*;
+
+public class Media extends JFrame{
+	private JMenu menu;
+	private JMenuBar menubar;
+	private JMenuItem exit;
+	Media(){
+		super("Play Video");
+		setLayout(new FlowLayout());
+		
+		menu = new JMenu("File");
+		menubar = new JMenuBar();
+		menubar.add(menu);
+		
+		exit = new JMenuItem("Exit");
+		menu.add(exit);
+		add(menubar);
+	}
+}

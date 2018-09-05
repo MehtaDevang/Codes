@@ -1,0 +1,22 @@
+import java.util.*;
+public class SumNumbers {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int t = Integer.parseInt(scanner.nextLine());
+		
+		for(int i = 0; i < t; i++) {
+			long x = Integer.parseInt(scanner.nextLine());
+			long y = Integer.parseInt(scanner.nextLine());
+			
+			long sum = x + y;
+			int len1 = ("" + x).length();
+			int len2 = ("" + sum).length();
+			if(len1 == len2) {
+				System.out.println(sum);
+			}
+			else {
+				System.out.println(x);
+			}
+		}
+	}
+}

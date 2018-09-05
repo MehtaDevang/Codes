@@ -1,0 +1,57 @@
+import java.io.*;
+import java.util.*;
+public class AnimalSelect {
+	java.util.Queue<String> queue = new LinkedList<>();
+	
+	public void enqueue(String data) {
+		queue.add(data);
+	}
+	public void dequeueAny() {
+		queue.remove();
+	}
+	public void dequeueDog() {
+		String str = queue.remove();
+		if(str == "dog") {
+			return;
+		}
+		else {
+			dequeueDog();
+			queue.add(str);
+		}
+		
+	}
+	
+	public void dequeueCat() {
+		String str = queue.remove();
+		if(str == "cat") {
+			return;
+		}
+		else {
+			dequeueCat();
+			queue.add(str);
+		}
+		
+	}
+	
+	public void printQueue() {
+		while(!queue.isEmpty()) {
+			System.out.println(queue.remove());
+		}
+	}
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		AnimalSelect obj = new AnimalSelect();
+		
+		obj.enqueue("cat");
+		obj.enqueue("cat");
+		obj.enqueue("dog");
+		obj.enqueue("dog");
+		obj.enqueue("cat");
+		obj.enqueue("dog");
+		obj.enqueue("cat");
+		obj.enqueue("dog");
+		obj.dequeueDog();
+		obj.printQueue();
+	}
+}

@@ -1,0 +1,51 @@
+import java.util.*;
+public class BooleanString {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		HashMap<String, String> map = new HashMap<>();
+		map.put("A", "&");
+		map.put("B", "|");
+		map.put("C", "^");
+		
+		int t = Integer.parseInt(scanner.nextLine());
+		
+		for(int i = 0; i < t; i++) {
+			String str = scanner.nextLine();
+			String temp = str;
+			if(str.contains("A")) {
+				temp = str.replace("A",map.get("A"));
+			}
+			if(str.contains("B")) {
+				temp = temp.replace("B",map.get("B"));
+			}
+			if(str.contains("C")) {
+				temp = temp.replace("C",map.get("C"));
+			}
+			System.out.println(temp);
+			
+			int j = 0;
+			int res = 0;
+			int count = 0;
+			while(j < temp.length()) {
+				if(temp.charAt(j) == '&') {
+					int x = Integer.parseInt(""+temp.charAt(j-1));
+					int y = Integer.parseInt(""+temp.charAt(j+1));
+					res = (count==0)?x&y:res&y;
+				}
+				else if(temp.charAt(j) == '|') {
+					int x = Integer.parseInt(""+temp.charAt(j-1));
+					int y = Integer.parseInt(""+temp.charAt(j+1));
+					res = (count==0)?x|y:res|y;
+				}
+				else if(temp.charAt(j) == '^') {
+					int x = Integer.parseInt(""+temp.charAt(j-1));
+					int y = Integer.parseInt(""+temp.charAt(j+1));
+					res = (count==0)?x|y:res|y;
+				}
+				count++;
+				j++;
+			}
+			System.out.println(res);
+		}
+	}
+}

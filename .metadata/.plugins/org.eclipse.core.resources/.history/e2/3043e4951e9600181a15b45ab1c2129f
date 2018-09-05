@@ -1,0 +1,25 @@
+import java.util.*;
+public class CommonCharacter {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int t = Integer.parseInt(scanner.nextLine());
+		
+		for(int i = 0; i < t; i++) {
+			String str = scanner.nextLine();
+			String str2 = scanner.nextLine();
+			int n = str2.length();
+			for(int j = 0; j < n; j++) {
+				char c = str2.charAt(j);
+				System.out.println("loop entry");
+				if(str.contains(""+c)) {
+					str.replaceAll(""+c, "");
+					System.out.println(str);
+					str2.replaceAll(""+c, "");
+					j = j-1;
+					n = str2.length();
+				}
+			}
+			System.out.println(str+str2);
+		}
+	}
+}

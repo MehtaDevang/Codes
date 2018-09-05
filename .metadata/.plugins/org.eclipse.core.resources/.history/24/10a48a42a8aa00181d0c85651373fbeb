@@ -1,0 +1,36 @@
+import java.util.*;
+public class MaximumOccurence {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		String str = scanner.nextLine().trim().replace(" ", "");
+		TreeMap<Character, Integer> map = new TreeMap<>();
+		char max_c = 'z';
+		int max_val = 0;
+		int index = 0;
+		for(char c : str.toCharArray()) {
+			if(!map.containsKey(c)) {
+				if(index == 0) {
+					max_val = 1;
+				}
+				map.put(c, 1);
+				if(max_val == 1) {
+					if(c < max_c) {
+						max_c = c;
+					}
+				}
+			}
+			else {
+				int temp = map.get(c);
+				map.put(c, temp + 1);
+				if(temp > max_val) {
+					max_val = temp+1;
+				}
+			}
+		}
+		System.out.println(max_c + " " + max_val);
+//		for(Character ch : map.keySet()) {
+//			System.out.println(ch + " " + map.get(ch));
+//			break;
+//		}
+	}
+}

@@ -1,0 +1,45 @@
+import java.util.*;
+public class CoinChange {
+	
+	public int countWays(int[] arr, int n) {
+		return count(arr, n, arr.length-1);
+	}
+	
+	public int count(int arr[], int n, int i) {
+		int c = 0;
+		int count = 0;
+		if(n == 0) {
+			return 1;
+		}
+		else if(n < 0) {
+			return 0;
+		}
+		else if(i < 0) {
+			return 0;
+		}
+		else if(n < arr[i]) {
+			return count(arr, n, i-1);
+		}
+		else {
+			c = c + count(arr, n, i-1);
+			for(int j = 0; j < arr.length; j++) {
+				c = c + count(arr, n-arr[j], i-1);
+			}
+			return c;
+		}		
+	}
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		String[] str = scanner.nextLine().trim().split(" ");
+		int n = Integer.parseInt(str[0]);
+		int m = Integer.parseInt(str[1]);
+		int[] arr = new int[m];
+		String[]temp = scanner.nextLine().trim().split(" ");
+		for(int i = 0; i < m; i++) {
+			arr[i] = Integer.parseInt(temp[i]);
+		}
+		CoinChange obj = new CoinChange();
+		int count = obj.countWays(arr, n);
+		System.out.println(count);
+	}
+}

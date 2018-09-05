@@ -1,0 +1,45 @@
+import java.util.*;
+public class PerfectPair {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int t = Integer.parseInt(scanner.nextLine().trim());
+		
+		for(int i = 0; i < t; i++) {
+			int n = Integer.parseInt(scanner.nextLine().trim());
+			String[] str = scanner.nextLine().trim().split(" ");
+			int[] arr = new int[n+1];
+			HashMap<HashSet<Integer>, Integer> map = new HashMap<>();
+			for(int j = 1; j <= n; j++) {
+				arr[j] = Integer.parseInt(str[j-1]);
+			}
+			int count = 0;
+			for(int row = 1; row <= n-1; row++) {
+				for(int col = row + 1; col <= n; col++) {
+					HashSet<Integer>s = new HashSet<>(); 
+					s.add(arr[row]);
+					s.add(arr[col]);
+					
+					if(!map.containsKey(s)) {
+						int val = arr[row] + arr[col];
+						int sq = (int)Math.sqrt(val);
+						int cube = (int)Math.cbrt(val);
+						if(sq*sq == val) {
+							count++;
+							map.put(s, 1);
+							continue;
+						}
+						else if(cube*cube*cube == val) {
+							count++;
+							map.put(s, 1);
+							continue;
+						}
+					}
+					else {
+						count++;
+					}
+				}
+			}
+			System.out.println(count);
+		}
+	}
+}

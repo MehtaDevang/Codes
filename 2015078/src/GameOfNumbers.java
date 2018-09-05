@@ -1,0 +1,53 @@
+import java.util.*;
+public class GameOfNumbers {
+	
+	public static int smaller(int[] arr, int index) {
+		int val = -1;
+		for(int i = index + 1; i < arr.length; i++) {
+			if(arr[index] < arr[i]) {
+				return i;
+			}
+		}
+		return val;
+	}
+	
+	public static int greater(int[] arr, int index) {
+		int val = -1;
+//		if(index >= arr.length) {
+//			return -1;
+//		}
+		for(int i = index + 1; i < arr.length; i++) {
+			if(arr[index] > arr[i]) {
+				return i;
+			}
+		}
+		return val;
+	}
+	
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int n = Integer.parseInt(scanner.nextLine());
+		int[] arr = new int[n+1];
+		
+		for(int i = 1; i <= n; i++) {
+			arr[i] = Integer.parseInt(scanner.nextLine());
+		}
+		
+		for(int i = 1; i <= n; i++) {
+			int val = arr[i];
+			int temp = smaller(arr, i);
+			int res = -1;
+			if(temp != -1) {
+				res = greater(arr, temp);
+			}
+			
+			if(res != -1) {
+				System.out.print(arr[res] + " ");
+			}
+			else {
+				System.out.print(res + " ");
+			}
+		}
+		
+	}
+}

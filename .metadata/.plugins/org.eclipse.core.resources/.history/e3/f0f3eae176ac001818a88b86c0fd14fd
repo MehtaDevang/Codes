@@ -1,0 +1,50 @@
+import java.util.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.lang.*;
+public class MancunianAndColouredTree {
+	public static void main(String[] args) throws Exception{
+		BufferedReader scanner = new BufferedReader(new InputStreamReader(System.in));
+		
+		String[] str = scanner.readLine().trim().split(" ");
+		int n = Integer.parseInt(str[0]);
+		int c = Integer.parseInt(str[1]);
+		
+		int[] arr = new int[n];
+		int[] a = new int[n];
+		arr[0] = 1;
+		String[] temp = scanner.readLine().trim().split(" ");
+		String[] t = scanner.readLine().trim().split(" ");
+		a[0] = Integer.parseInt(t[0]);
+//		String[] colour = scanner.readLine().trim().split(" ");
+		for(int i = 1; i < n; i++) {
+			arr[i] = Integer.parseInt(temp[i-1]);
+			a[i] = Integer.parseInt(t[i]);
+		}
+		
+		for(int i = 0; i < n; i++) {
+			int close = -1;
+			int num = a[i];
+			int j;
+			if(i % 2 == 0) {
+				j = (i-2)/ 2;
+			}
+			else {
+				j = (i-1)/2;
+			}
+			for(j = j; j >= 0;) {
+				if(a[j] == num) {
+					close = j+1;
+					break;
+				}
+				if(j % 2 == 0) {
+					j = (j-2)/ 2;
+				}
+				else {
+					j = (j-1)/2;
+				}
+			}
+			System.out.print(close + " ");
+		}
+	}
+}

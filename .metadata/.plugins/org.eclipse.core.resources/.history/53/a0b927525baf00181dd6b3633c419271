@@ -1,0 +1,52 @@
+import java.util.*;
+import java.util.Stack;
+public class SimpleTextEditor {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		int q = Integer.parseInt(scanner.nextLine().trim());
+		String str = "";
+		Stack<String> string = new Stack<>();
+		Stack<Integer> stack = new Stack<>();
+		for(int i = 0; i < q; i++) {
+			String[] temp = scanner.nextLine().trim().split(" ");
+			int operation = Integer.parseInt(temp[0]);
+			if(operation == 1) {
+				String s = temp[1];
+				str = str + s;
+				string.push(s);
+				stack.push(operation);
+			}
+			else if(operation == 2) {
+				int k = Integer.parseInt(temp[1]);
+				int len = str.length() - k;
+				str = str.substring(0, len);
+				string.push(str);
+				stack.push(operation);
+			}
+			else if(operation == 3) {
+				int k = Integer.parseInt(temp[1]);
+				System.out.println(str.charAt(k-1));
+			}
+			else {
+				int x = stack.pop();
+				if(x == 1) {
+					String t = string.pop();
+					int l = t.length();
+					str = str.substring(0, str.length() - l);
+					string.pop();
+				}
+				else {
+					string.pop();
+					if(!string.isEmpty()) {
+						str = str + string.peek();
+					}
+					else {
+						str = "";
+					}
+					
+				}
+			}
+		}
+	}
+}

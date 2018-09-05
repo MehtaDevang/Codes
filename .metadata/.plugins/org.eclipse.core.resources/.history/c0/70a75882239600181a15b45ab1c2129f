@@ -1,0 +1,26 @@
+import java.util.*;
+public class BooleanString {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		HashMap<String, String> map = new HashMap<>();
+		map.put("A", "&");
+		map.put("B", "|");
+		map.put("C", "^");
+		
+		int t = Integer.parseInt(scanner.nextLine());
+		
+		for(int i = 0; i < t; i++) {
+			String str = scanner.nextLine();
+			if(str.contains("A")) {
+				str.replaceAll("A",map.get("A"));
+			}
+			if(str.contains("B")) {
+				str.replaceAll("B",map.get("B"));
+			}
+			if(str.contains("C")) {
+				str.replaceAll("C",map.get("C"));
+			}
+			System.out.println(str);
+		}
+	}
+}

@@ -1,0 +1,51 @@
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
+import javax.swing.*;
+import java.net.*;
+import java.io.*;
+
+public class Media extends JFrame{
+	private JMenu menu;
+	private JMenuBar menubar;
+	private JMenuItem exit;
+	private JMenuItem open;
+	
+	private JFileChooser chooser;
+	Media(){
+		super("Play Video");
+		setLayout(new FlowLayout());
+		
+		menu = new JMenu("File");
+		menubar = new JMenuBar();
+		menubar.add(menu);
+		open = new JMenuItem("Open Video");
+		menu.add(open);
+		exit = new JMenuItem("Exit");
+		menu.add(exit);
+		add(menubar);
+		
+		Handler handler = new Handler();
+		exit.addActionListener(handler);
+		open.addActionListener(handler);
+	}
+	
+	private class Handler implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			if(e.getSource() == exit) {
+				System.exit(0);
+			}
+			else if(e.getSource() == open) {
+				chooser = new JFileChooser();
+				add(chooser);
+				chooser.showOpenDialog(null);
+			}
+		}
+		
+	}
+}
+
+

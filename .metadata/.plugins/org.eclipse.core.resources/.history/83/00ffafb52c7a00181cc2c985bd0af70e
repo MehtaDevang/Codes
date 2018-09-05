@@ -1,0 +1,30 @@
+import java.util.Stack;
+public class ReverseWords {
+	
+	public String reverse(Stack<String> stack) {
+		String res = "";
+		if(stack.isEmpty()) {
+			return res;
+		}
+		else {
+			char 
+		}
+		
+		return res;
+		
+	}
+	public static void main(String[] args) {
+		ReverseWords obj = new ReverseWords();
+		
+		Stack<String> stack = new Stack<>();
+		
+		String str = "Geeks For Geeks";
+		
+		String[] s = str.split(" ");
+		String result = "";
+		for(int i = 0 ;i < s.length; i++) {
+			stack.push(s[0]);
+			String a = obj.reverse(stack);
+		}
+	}
+}
