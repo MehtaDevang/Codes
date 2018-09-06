@@ -21,7 +21,6 @@ public class SherlockAndPermutations {
 			BigInteger n_fact = fact(n);
 			BigInteger m_fact = fact(m-1);			
 			BigInteger result = fact.divide(n_fact.multiply(m_fact));
-//			result = result.mod(new BigInteger("1000000007"));
 			System.out.println(result.mod(new BigInteger("1000000007")));
 		}
 		scanner.close();
