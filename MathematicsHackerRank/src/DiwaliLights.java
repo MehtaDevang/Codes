@@ -7,7 +7,7 @@ public class DiwaliLights {
 		for(int i = 0; i < t; i++) {
 			int n = Integer.parseInt(scanner.nextLine().trim());
 			BigInteger c = new BigInteger("2");
-			BigInteger patterns = (c.pow(n));
+			BigInteger patterns = c.pow(n);
 			patterns = patterns.subtract(new BigInteger("1"));
 			patterns = patterns.mod(new BigInteger("100000"));
 			System.out.println(patterns);
