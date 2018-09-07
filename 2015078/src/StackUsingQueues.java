@@ -1,0 +1,53 @@
+import java.util.*;
+import java.io.*;
+
+public class StackUsingQueues {
+	
+	Node head = null;
+	public class Node{
+		int data;
+		Node next;
+		
+		public Node(int data) {
+			this.data = data;
+			next = null;
+		}
+	}
+	
+	public void push(int data) {
+		Node node = new Node(data);
+		if(head == null) {
+			head = node;
+		}
+		else {
+			node.next = head;
+			head = node;
+		}
+	}
+	
+	public void dequeue() {
+		Node temp = head.next;
+		head.next = null;
+		head = temp;
+	}
+	
+	public void print() {
+		Node temp = head;
+		while(temp != null) {
+			System.out.print(temp.data + " ");
+			temp = temp.next;
+		}
+	}
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		StackUsingQueues obj = new StackUsingQueues();
+		
+		obj.push(1);
+		obj.push(2);
+		obj.push(3);
+		obj.push(4);
+		obj.push(5);
+		
+		obj.print();
+	}
+}
